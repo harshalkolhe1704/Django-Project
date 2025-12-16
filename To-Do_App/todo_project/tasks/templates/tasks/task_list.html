@@ -1,9 +1,17 @@
-// {% extends 'tasks/base.html' %}
-// {% block content %}
-<p>Delete "{{ task.title }}"?</p>
-<form action="" method="post">
-    {% csrf_token %}
-    <button type="submit">Yes Delete</button>
-    <a href="{% url 'task_list' %}">Cancel</a>
-</form>
+{% extends 'tasks/base.html' %}
+{% block content %}
+    <a href="{% url 'task_create' %}">Create Task</a>
+    <ul id="task-list">
+        {% for task in tasks %}
+            <li class="{% if task.completed %}completed{% endif %}">
+                <span>{{ task.title }}</span>
+                <span>
+                    <a href="{% url 'task_update' task.pk %}">Edit</a>
+                    <a href="{% url 'task_delete' task.pk %}">Delete</a>
+                </span>
+            </li>
+        {% empty %}
+            <li>No tasks yet.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

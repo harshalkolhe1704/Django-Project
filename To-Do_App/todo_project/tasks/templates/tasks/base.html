@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
-    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tasks/css/style.css' %}">
 </head>
 <body>
     <div class="container">
@@ -12,5 +13,6 @@
         {% block content %}
         {% endblock %}
     </div>
+     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
