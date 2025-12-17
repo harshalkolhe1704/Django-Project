@@ -15,24 +15,44 @@ body {
 }
 
 /* Container */
+.topbar {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+}
+
+.topbar .brand {
+    font-weight: 700;
+    color: #073b4c;
+}
+
+.topbar .nav a, .topbar .welcome {
+    margin-left: 1rem;
+    color: #073b4c;
+    text-decoration: none;
+}
+
 .container {
     background: #fff;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     width: 100%;
-    max-width: 500px;
-    animation: fadeIn 1s ease-in-out;
+    max-width: 720px;
+    animation: fadeIn 0.9s ease-in-out;
 }
 
 /* Heading */
 .container h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #073b4c;
+    font-size: 1.6rem;
     position: relative;
-    animation: slideDown 0.8s ease;
 }
 
 /* To-do items block */
@@ -40,11 +60,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f7f7f7;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
     padding: 0.8rem 1rem;
     margin-bottom: 0.8rem;
-    border-radius: 8px;
-    transition: transform 0.2s ease, background 0.3s ease;
+    border-radius: 10px;
+    transition: transform 0.18s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(7,59,76,0.04);
 }
 
 .todo-item:hover {
@@ -54,19 +75,23 @@ body {
 
 /* Buttons */
 button {
-    background: #74ebd5;
+    background: #06b6d4;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    color: #fff;
+    transition: background 0.2s ease, transform 0.12s ease;
 }
 
-button:hover {
-    background: #4bb3a7;
-    transform: translateY(-2px);
-}
+button:hover { background: #0497a8; transform: translateY(-2px); }
+
+.auth-card { max-width: 420px; margin: 0 auto; }
+.messages { list-style: none; margin-bottom: 0.75rem; }
+.message { padding: 0.6rem 0.8rem; border-radius: 6px; margin-bottom: 0.5rem; }
+.message.error { background: #ffe3e3; color: #7a1a1a; }
+.message.success { background: #e6fffa; color: #014d45; }
 
 /* Animations */
 @keyframes fadeIn {

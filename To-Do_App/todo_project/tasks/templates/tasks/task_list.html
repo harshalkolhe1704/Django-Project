@@ -1,17 +1,26 @@
 {% extends 'tasks/base.html' %}
 {% block content %}
-    <a href="{% url 'task_create' %}">Create Task</a>
+    <div class="actions">
+        <a class="btn" href="{% url 'task_create' %}">+ New Task</a>
+    </div>
     <ul id="task-list">
         {% for task in tasks %}
-            <li class="{% if task.completed %}completed{% endif %}">
-                <span>{{ task.title }}</span>
-                <span>
-                    <a href="{% url 'task_update' task.pk %}">Edit</a>
-                    <a href="{% url 'task_delete' task.pk %}">Delete</a>
-                </span>
+            <li id="task-{{ task.pk }}" class="todo-item {% if task.completed %}completed{% endif %}">
+                <div>
+                    <strong>{{ task.title }}</strong>
+                    <div class="muted">{{ task.description|default:"" }}</div>
+                </div>
+                <div class="controls">
+                    <form method="get" action="{% url 'task_update' task.pk %}" style="display: inline;">
+                        <button type="submit" class="btn-link">Edit</button>
+                    </form>
+                    <form method="get" action="{% url 'task_delete' task.pk %}" style="display: inline;">
+                        <button type="submit" class="btn-link danger">Delete</button>
+                    </form>
+                </div>
             </li>
         {% empty %}
-            <li>No tasks yet.</li>
+            <li class="muted">No tasks yet. Create your first task!</li>
         {% endfor %}
     </ul>
 {% endblock %}
